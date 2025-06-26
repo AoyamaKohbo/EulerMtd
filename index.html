@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="ja">
+
+  <head>
+    <title>Popovの超安定論</title>
+
+    <script type="text/x-mathjax-config">
+
+       MathJax.Hub.Config({TeX:{equationNumbers:{autoNumber:"AMS"}}});
+
+    </script>
+
+    <script type="text/javascript" async 
+
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+
+    </script>
+  </head>
+
+  <div class="header">
+     <h3>オイラー法による数値積分法</h3>
+
+  <body>
+    <p>サンプル周期\(T\)[s]として、時間\(t=nT\)における加速度\(a(n)\)、速度\(v(n)\)、変位\(x(n)\)から
+      時間\(t=(n+1)T\)における加速度\(a(n+1)\)、速度\(v(n+1)\)、変位\(x(n+1)\)を次式で逐次計算します。
+    </p>
+    \begin{align}
+     v(n+1) &=~ v(n)+a(n)T\\
+     x(n+1) &=~ x(n) + v(n)T + \frac{1}{2}a(n)T^2
+    \end{align}
+  
+  <p>線形な力学システムだけでなく、非線形な力学システムに対しても有効な方法です。
+    ただし、サンプル周期\(T\)の設定に注意が必要です。
+  </p>
+  </body>
+
+</html>
