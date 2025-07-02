@@ -19,20 +19,44 @@
   </head>
 
   <div class="header">
-     <h3>オイラー法による逐次数値積分法</h3>
+     <h3>Euler(オイラー)法による逐次数値積分法</h3>
 
   <body>
-    <p>時間刻み\(\varDelta t\)[s]として、時間時間刻み\(t=n\varDelta t\)における加速度\(a(n)\)、速度\(v(n)\)、変位\(x(n)\)から
-      時間\(t=(n+1)\varDelta t\)における速度\(v(n+1)\)、変位\(x(n+1)\)を次式で逐次計算します。
+    <p>時間刻み\(\varDelta t\)[s]として、時間時間刻み\(t=n\varDelta t\)における加速度\(\ddot x(n)\)、速度\(\dot x(n)\)、変位\(x(n)\)から
+      時間\(t=(n+1)\varDelta t\)における速度\(\dot x(n+1)\)、変位\(x(n+1)\)を次式で逐次計算します。
     </p>
     \begin{align}
-     v(n+1) &=~ v(n)+a(n)\varDelta t\\
-     x(n+1) &=~ x(n) + v(n)\varDelta t + \frac{1}{2}a(n)\varDelta t^2
+     \left.
+      \begin{array}{@{\,}rl}
+     \dot x(n+1) &=~ \dot x(n)+\ddot x(n)\varDelta t\\
+     x(n+1) &=~ x(n) + \dot x(n)\varDelta t + \frac{1}{2}\ddot x(n)\varDelta t^2
+      \end{array}
+      \right\}      \label{eq:EulerMtd}
     \end{align}
   
-  <p>線形な力学システムだけでなく、非線形な力学システムに対しても有効な方法です。
-    ただし、時間刻み\(\varDelta t\)の設定に注意が必要です。
+  <p>線形な力学システムだけでなく、係数が時間で変化する時変系や非線形な力学システムに対して有効な方法です。
+    ただし、誤差が拡大しないように時間刻み\(\varDelta t\)の設定に注意が必要です。
   </p>
+
+  <p>\(\ddot x = -\omega^2x\)、\(x(0)=1\)、\(\dot x(0) = 0\)の解は\(x(t) = \cos \omega x\)となります。
+    これをEuler法で数値解析します。
+  </p>
+  <p>式\eqref{eq:EulerMtd}に\(\ddot x = -\omega^2 x\)を代入します。</p>
+    \begin{align}
+     \left.
+      \begin{array}{@{\,}rl}
+     \dot x(n+1) &=~ \dot x(n) - \omega^2 x(n)\varDelta t\\
+     x(n+1) &=~ x(n) + \dot x(n)\varDelta t - \frac{1}{2} \omega^2 x(n)\varDelta t^2
+      \end{array}
+      \right\}
+    \end{align}
+
+  <p>ここでは、\(\omega=6.28\times 10\)[rad/s]に対して\(\varDelta t=0.001,0.0001,0.00001\)[s]の場合について
+    \(t=0\)～\(3\)[s]の計算結果を観察します。</p>
+
+  <img src="EulerMtd.jpg" width=400px>
+
+  <p><a href="https://aoyamakohbo.github.io/Craftlogy/">->TOP</a></p>
   </body>
 
 </html>
