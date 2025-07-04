@@ -22,14 +22,14 @@
      <h3>Euler(オイラー)法による逐次数値積分法</h3>
 
   <body>
-    <p>時間刻み\(\varDelta t\)[s]として、時間時間刻み\(t=n\varDelta t\)における加速度\(\ddot x(n)\)、速度\(\dot x(n)\)、変位\(x(n)\)から
-      時間\(t=(n+1)\varDelta t\)における速度\(\dot x(n+1)\)、変位\(x(n+1)\)を次式で逐次計算します。
+    <p>時間刻み\(\varDelta t\)[s]として、時間時間刻み\(t=n\varDelta t\)における加速度\(\ddot x(k)\)、速度\(\dot x(k)\)、変位\(x(k)\)から
+      時間\(t=(k+1)\varDelta t\)における速度\(\dot x(k+1)\)、変位\(x(k+1)\)を次式で逐次計算します。
     </p>
     \begin{align}
      \left.
       \begin{array}{@{\,}rl}
-     \dot x(n+1) &=~ \dot x(n)+\ddot x(n)\varDelta t\\
-     x(n+1) &=~ x(n) + \dot x(n)\varDelta t + \frac{1}{2}\ddot x(n)\varDelta t^2
+     \dot x(k+1) &=~ \dot x(k)+\ddot x(k)\varDelta t\\
+     x(k+1) &=~ x(k) + \dot x(k)\varDelta t + \frac{1}{2}\ddot x(k)\varDelta t^2
       \end{array}
       \right\}      \label{eq:EulerMtd}
     \end{align}
@@ -45,16 +45,25 @@
     \begin{align}
      \left.
       \begin{array}{@{\,}rl}
-     \dot x(n+1) &=~ \dot x(n) - \omega^2 x(n)\varDelta t\\
-     x(n+1) &=~ x(n) + \dot x(n)\varDelta t - \frac{1}{2} \omega^2 x(n)\varDelta t^2
+     \dot x(k+1) &=~ \dot x(k) - \omega^2 x(k)\varDelta t\\
+     x(k+1) &=~ x(k) + \dot x(k)\varDelta t - \frac{1}{2} \omega^2 x(k)\varDelta t^2
       \end{array}
       \right\}
     \end{align}
 
   <p>ここでは、\(\omega=6.28\times 10\)[rad/s]に対して\(\varDelta t=0.001,0.0001,0.00001\)[s]の場合について
     \(t=0\)～\(3\)[s]の計算結果を観察します。</p>
+  <p>この数値計算では、サンプル時間\(T=0.005\)[s]の時間間隔で\(k\)に対して
+    \(T/\varDelta t\)回ごとにEuler法で計算した\(x\)と\(\dot x\)
+    をサンプルし、\(x(n)\)と\(\dot x(n)\)ます。
+  </p>
 
   <img src="EulerMtd.jpg" width=400px>
+
+  <p>Euler法時間の時間刻み\(\varDelta t = 0.001\)[s]では振幅が急速に減少し、誤差が拡大されていくことを確認できます。</p>
+  <p>Euler法時間の時間刻み\(\varDelta t = 0.0001\)[s]では振幅の減少が緩和され、誤差が拡大が改善されています。</p>
+  <p>Euler法時間の時間刻み\(\varDelta t = 0.00001\)[s]では３秒間で正解(\(\cos\omega t\))とほぼ完全に一致しています。</p>
+
 
   <p><a href="https://aoyamakohbo.github.io/Craftlogy/">->TOP</a></p>
   </body>
